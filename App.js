@@ -1,11 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
-
-export default function App() {
+import * as React from 'react';
+import { SafeAreaView, Text } from "react-native";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import LoginScreen from './src/screens/login/LoginScreen'
+const Stack = createNativeStackNavigator();
+function App() {
   return (
-    <View className="flex-1 items-center justify-center bg-white">
-      <Text className="items-center">Home Screen</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={LoginScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-};
+}
+
+export default App;
