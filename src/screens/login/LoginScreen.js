@@ -1,33 +1,49 @@
-import React, { useLayoutEffect, useState} from 'react';
+import React, { useEffect, useLayoutEffect, useState} from 'react';
 import { SafeAreaView, Text, Image, Pressable, StyleSheet } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import Logo from '../../../assets/images/Logo.png'
 import globalStyles from '../../styles/GlobalStyles'
 import CustomInput from '../../components/CustomInput'
+import { auth } from '../../Firebase/Index';
 
 const LoginScreen = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    useEffect(() => {
+      auth 
+      .onAuthStateChanged(user => {
+        if (user){
+          navigation.navigate('Home')
+        }
+      } )
+    }, []);
+
     const navigation = useNavigation();
 
     const handleLogin = async() => {
-        //TODO 
+        auth
+        .signInWithEmailAndPassword(email, password)
+        .then(userCredentials => {
+          const user = userCredentials.user;
+          console.log('logged in with: ', user.email)
+      })
+      .catch(error => alert(error.message) )
       };
     
-        const handleCreateAccount = () => {
-          navigation.navigate('CreateAccount')
-        }
+    const handleCreateAccount = () => {
+        navigation.navigate('CreateAccount')
+       }
     
-      const handleForgotPass = () =>{
-        navigation.navigate('ForgotPass')
-      } 
+    const handleForgotPass = () =>{
+      navigation.navigate('ForgotPass')
+    } 
 
-    useLayoutEffect(() => {
-        navigation.setOptions({
-         headerShown: false,
-         });
-     }, []);
+  useLayoutEffect(() => {
+       navigation.setOptions({
+       headerShown: false,
+       });
+       }, []);
 
 return(
 
@@ -86,6 +102,7 @@ const styles = StyleSheet.create({
       alignItems: 'center'
     },
     logo: {
+      marginRight: '5%',
       marginTop: '10%',
       height: '35%',
       width: '100%',
