@@ -1,9 +1,9 @@
 import React, { useLayoutEffect, useState} from 'react';
 import { SafeAreaView, Text, Image, Pressable, StyleSheet } from "react-native";
 import { useNavigation } from '@react-navigation/native';
-import Logo from '../../../assets/Images/Logo.png'
-import globalStyles from '../../styles/GlobalStyles';
-
+import Logo from '../../../assets/images/Logo.png'
+import globalStyles from '../../styles/GlobalStyles'
+import CustomInput from '../../components/CustomInput'
 
 const LoginScreen = () => {
     const [email, setEmail] = useState('');
@@ -16,11 +16,11 @@ const LoginScreen = () => {
       };
     
         const handleCreateAccount = () => {
-          //navigation.navigate('CreateAccount')
+          navigation.navigate('CreateAccount')
         }
     
       const handleForgotPass = () =>{
-        //navigation.navigate('ForgotPass')
+        navigation.navigate('ForgotPass')
       } 
 
     useLayoutEffect(() => {
@@ -31,7 +31,7 @@ const LoginScreen = () => {
 
 return(
 
-    <SafeAreaView>
+    <SafeAreaView style={globalStyles.container}>
       <Image 
         style={styles.logo}
         source={Logo}
@@ -57,7 +57,7 @@ return(
         <Text style={styles.forgotPassText}>Forgot Password</Text>
       </Pressable>
 
-      <Pressable style={styles.forgotPassButton} onPress={handleCreateAccount}>
+      <Pressable style={styles.createAccountButton} onPress={handleCreateAccount}>
         <Text style={styles.forgotPassText}>Dont have an account? Create one!</Text>
       </Pressable>
     </SafeAreaView>
@@ -77,9 +77,18 @@ const styles = StyleSheet.create({
       fontSize: 10,
       fontWeight: 'bold',
     },
+    createAccountButton: {
+      padding: 5,
+      borderRadius: 5,
+      paddingHorizontal: '5%',
+      marginTop: 10,
+      width: '50%',
+      alignItems: 'center'
+    },
     logo: {
-      height: '30%',
-      width: '30%',
+      marginTop: '10%',
+      height: '35%',
+      width: '100%',
     }
   })
 export default LoginScreen

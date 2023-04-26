@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TextInput, StyleSheet } from 'react-native';
-import globalStyles from '../styles/global.styles';
+import globalStyles from '../styles/GlobalStyles';
 
 const CustomInput = ({ label, placeholder, value, onChangeText, secureTextEntry}) => {
   return (
