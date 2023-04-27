@@ -14,7 +14,7 @@ const ForgotPassScreen = ({ navigation }) => {
     try {
       await auth.sendPasswordResetEmail(email);
       alert("Password reset email has been sent");
-      navigation.navigate('Login')
+      navigation.replace('Login')
     } catch (error) {
       alert(error);
     }
