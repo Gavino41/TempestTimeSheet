@@ -10,20 +10,22 @@ const LoginScreen = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const navigation = useNavigation();
+
     useEffect(() => {
-      auth 
-      .onAuthStateChanged(user => {
+      const unsubscribe = auth.onAuthStateChanged(user => {
         if (user){
           navigation.navigate('Home')
         }
       } )
+
+      return unsubscribe
     }, []);
 
-    const navigation = useNavigation();
+
 
     const handleLogin = async() => {
-        auth
-        .signInWithEmailAndPassword(email, password)
+        auth.signInWithEmailAndPassword(email, password)
         .then(userCredentials => {
           const user = userCredentials.user;
           console.log('logged in with: ', user.email)
