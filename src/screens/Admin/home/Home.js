@@ -4,15 +4,15 @@ import { useNavigation } from '@react-navigation/native';
 import firebase from 'firebase';
 
 
-const UserHomeScreen = () => {
+const AdminHomeScreen = () => {
     const navigation = useNavigation();
   
     return (
       <SafeAreaView>
-        <Text>Welcome to the User Home Screen!</Text>
-        <Button title="Logout" onPress={() => { firebase.auth().signOut(); navigation.replace('Login'); }} />
+        <Text>Welcome to the Admin Home Screen!</Text>
+        <Button title="Logout" onPress={() => { firebase.auth().signOut(); navigation.navigate('Login'); }} />
       </SafeAreaView>
     );
   };
   
-export default UserHomeScreen
+export default AdminHomeScreen

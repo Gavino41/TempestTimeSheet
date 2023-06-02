@@ -5,7 +5,8 @@ const globalStyles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#222',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    paddingBottom: 50,
+ 
     
   },
   text: {
