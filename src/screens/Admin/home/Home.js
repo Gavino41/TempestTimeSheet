@@ -6,6 +6,12 @@ import firebase from 'firebase';
 
 const AdminHomeScreen = () => {
     const navigation = useNavigation();
+
+    useEffect(() => {
+        navigation.setOptions({
+          headerShown: false,
+        });
+      }, [navigation]);
   
     return (
       <SafeAreaView>

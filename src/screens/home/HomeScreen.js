@@ -8,6 +8,11 @@ import { auth } from '../../Firebase/Index';
 const UserHomeScreen = () => {
     const navigation = useNavigation();
 
+    useEffect(() => {
+        navigation.setOptions({
+          headerShown: false,
+        });
+      }, [navigation]);
   
   
     return (
