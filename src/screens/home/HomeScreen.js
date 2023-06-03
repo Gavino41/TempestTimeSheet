@@ -2,10 +2,13 @@ import React from 'react';
 import { SafeAreaView, Text, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import firebase from 'firebase';
+import { auth } from '../../Firebase/Index';
 
 
 const UserHomeScreen = () => {
     const navigation = useNavigation();
+
+  
   
     return (
       <SafeAreaView>

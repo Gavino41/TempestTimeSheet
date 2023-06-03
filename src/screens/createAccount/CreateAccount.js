@@ -4,6 +4,7 @@ import { auth } from '../../Firebase/Index';
 import globalStyles from '../../styles/GlobalStyles';
 import Logo from '../../../assets/images/Logo.png';
 import CustomInput from '../../components/CustomInput';
+import firebase from 'firebase';
 
 const CreateAccountScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -12,15 +13,23 @@ const CreateAccountScreen = ({ navigation }) => {
   const [name, setName] = useState('');
   const [role, setRole] = useState('');
 
+
+  const firestore = firebase.firestore;
+
+
   const handleCreateAccount = () => {
     if (password === password2) {
       auth
-        .createUserWithEmailAndPassword(email, password)
-        .then(userCredentials => {
-          const user = userCredentials.user;
-          console.log(user.email);
+      .createUserWithEmailAndPassword(email, password)
+        .then(() => {
+          firestore().collection("users").doc(auth.currentUser.uid).set({
+            uid: auth.currentUser.uid,
+            name,
+            role,
+            email
+          })
         })
-        .catch(error => alert(error.message));
+        .catch(error => console.log(error.message));
     } else {
       alert("Passwords don't match");
     }
