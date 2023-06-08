@@ -1,13 +1,24 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { SafeAreaView, Text, Button } from 'react-native';
+import { useEffect } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home Screen</Text>
-    </View>
-  );
-};
+    const navigation = useNavigation();
+
+    useEffect(() => {
+        navigation.setOptions({
+          headerShown: false,
+        });
+      }, [navigation]);
+  
+    return (
+      <SafeAreaView>
+        <Text>Welcome to the User Home Screen!</Text>
+        <Button title="Logout" onPress={() => { firebase.auth().signOut(); navigation.replace('Login'); }} />
+      </SafeAreaView>
+    );
+  };
 
 export default HomeScreen;
 

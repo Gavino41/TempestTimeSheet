@@ -1,8 +1,8 @@
 import React from 'react';
-import BottomTabNavigator from './BottomTabNavigator';
+import BottomTabNavigator from '../../components/BottomTabNav';
 
-const App = () => {
+const UserHomeScreen = () => {
   return <BottomTabNavigator />;
 };
 
-export default App;
+export default UserHomeScreen;
