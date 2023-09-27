@@ -4,7 +4,7 @@ import globalStyles from '../../styles/GlobalStyles';
 import Logo from '../../../assets/images/Logo.png'
 import CustomInput from '../../components/CustomInput';
 import { auth } from '../../Firebase/Index';
-import { useNavigation } from '@react-navigation/native';
+
 
 const ForgotPassScreen = ({ navigation }) => {
 
