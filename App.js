@@ -6,6 +6,7 @@ import CreateAccountScreen from './src/screens/createAccount/CreateAccount';
 import ForgotPassScreen from './src/screens/forgotPassword/ForgotPassword';
 import AdminHomeScreen from './src/screens/Admin/home/Home';
 import UserHomeScreen from './src/screens/home/Index';
+import HomeScreen from './src/screens/home/HomeScreen';
 
 const Stack = createNativeStackNavigator();
 function App() {
@@ -15,7 +16,7 @@ function App() {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="CreateAccount" component={CreateAccountScreen} />
         <Stack.Screen name="ForgotPass" component={ForgotPassScreen} />
-        <Stack.Screen name="Home" component={UserHomeScreen} />
+        <Stack.Screen name="UserHome" component={UserHomeScreen} />
         <Stack.Screen name="AdminHome" component={AdminHomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>

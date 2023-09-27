@@ -26,7 +26,7 @@ const LoginScreen = () => {
               const userData = doc.data();
               if (userData.role === 'User') {
                 console.log('navigating user home');
-                navigation.replace('Home');
+                navigation.replace('UserHome');
               } else if (userData.role === 'Admin') {
                 console.log('navigating admin home');
                 navigation.replace('AdminHome');
