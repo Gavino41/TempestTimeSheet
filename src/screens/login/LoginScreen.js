@@ -6,6 +6,7 @@ import globalStyles from '../../styles/GlobalStyles';
 import CustomInput from '../../components/CustomInput';
 import { auth } from '../../Firebase/Index';
 import firebase from 'firebase';
+import AuthService from '../../services/AuthService';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -14,36 +15,12 @@ const LoginScreen = () => {
   const navigation = useNavigation();
   const firestore = firebase.firestore();
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
-      if (user) {
-        firestore
-          .collection('users')
-          .doc(user.uid)
-          .get()
-          .then(doc => {
-            if (doc.exists) {
-              const userData = doc.data();
-              if (userData.role === 'User') {
-                console.log('navigating user home');
-                navigation.replace('UserHome');
-              } else if (userData.role === 'Admin') {
-                console.log('navigating admin home');
-                navigation.replace('AdminHome');
-              }
-              else{
-                console.log('not user or admin');
-              }
-            }
-            else {
-              console.log('not doc found')
-            }
-          })
-          .catch(error => console.log(error));
-      }
-    });
+  const unsubscribe = AuthService.checkUserAndNavigate(navigation);
 
-    return unsubscribe;
+  useEffect(() => {
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   const handleLogin = () => {
