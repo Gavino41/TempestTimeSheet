@@ -15,10 +15,10 @@ const AdminHomeScreen = () => {
       }, [navigation]);
   
     return (
-      <SafeAreaView>
+      <View>
         <Text>Welcome to the Admin Home Screen!</Text>
         <Button title="Logout" onPress={() => { firebase.auth().signOut(); navigation.replace('Login'); }} />
-      </SafeAreaView>
+      </View>
     );
   };
   

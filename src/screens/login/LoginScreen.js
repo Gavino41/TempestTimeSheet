@@ -15,11 +15,11 @@ const LoginScreen = () => {
   const navigation = useNavigation();
   const firestore = firebase.firestore();
 
-  const unsubscribe = AuthService.checkUserAndNavigate(navigation);
-
   useEffect(() => {
+    const unsubscribe = AuthService.checkUserAndNavigate(navigation);
+
     return () => {
-      unsubscribe();
+      unsubscribe(); 
     };
   }, []);
 
