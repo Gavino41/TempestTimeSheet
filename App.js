@@ -16,7 +16,7 @@ function App() {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="CreateAccount" component={CreateAccountScreen} />
         <Stack.Screen name="ForgotPass" component={ForgotPassScreen} />
-        <Stack.Screen name="UserHome" component={BottomTabNavigatorUser} options={{ headerShown: false }}/>
+        <Stack.Screen name="UserHome" component={BottomTabNavigatorUser} /*options={{ headerShown: false }}*/ />
         <Stack.Screen name="User" component={HomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
